@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 615 1080 150" role="img" aria-labelledby="title">
+  <title id="title">ELTONEX</title>
+  <g fill-rule="evenodd" shape-rendering="geometricPrecision">
+    <g>
+      <path fill="#0f0f0e" d="M214 634h91v19h-72v20l-18 1Zm1 75 18 1v21h72v18h-91Z"/>
+      <path fill="#e5b133" d="M220 684h71v16h-72l-5-10Z"/>
+    </g>
+    <path fill="#0f0f0e" d="M369 634h20l-1 97h68v18h-87Z"/>
+    <path fill="#0f0f0e" d="M494 634h100l-1 19h-39l-1 96h-19v-96h-40Z"/>
+    <g>
+      <path fill="#0f0f0e" d="M660 655c12-15 30-25 49-27 25 2 45 15 57 34s12 38 4 54c-8 4-16 5-25 2 8-10 11-22 9-36-2-15-11-27-22-32-14-7-29-7-42-2Zm21 5c-8 10-12 21-12 34 1 18 12 32 29 37 16 5 31 3 44-1l22-3c-5 11-14 19-25 24-20 8-43 6-60-3-19-11-30-30-31-53v-6h21c1-12 5-22 12-29Z"/>
+      <path fill="#e5b133" d="M681 660c-9 2-19 4-28 7-3 7-5 14-4 22h21c0-11 3-21 11-29Z"/>
+      <path fill="#e5b133" d="M723 733c15 0 29-3 41-6-4 8-11 14-20 18Z"/>
+    </g>
+    <path fill="#0f0f0e" d="M841 634h19l61 80 1-80h19v115h-18l-61-80-1 80h-20Z"/>
+    <g>
+      <path fill="#0f0f0e" d="M1008 634h90v18l-72 1v20l-18 1Zm0 75 18 1v21h72v18l-90 1Z"/>
+      <path fill="#e5b133" d="m1026 683 58 1v16h-70l-6-5v-5l5-6Z"/>
+    </g>
+    <g>
+      <path fill="#0f0f0e" d="M1151 634h24l42 55h-25Zm35 65 25-9-38 59-23 1Zm34-2 9 6-1 3 32 43h-23l-3-3-25-33Z"/>
+      <path fill="#e5b133" d="m1237 634 23 1-39 48-11-15Z"/>
+    </g>
+  </g>
+</svg>

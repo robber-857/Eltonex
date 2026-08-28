@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1448" height="1086" viewBox="0 0 1448 1086" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">ELTONEX — Build What’s Next</title>
+  <desc id="logo-desc">A black and gold geometric light-and-motion mark above the ELTONEX wordmark and Build What’s Next tagline.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#efb423"/>
+      <stop offset="0.56" stop-color="#f8c63e"/>
+      <stop offset="1" stop-color="#f3bc30"/>
+    </linearGradient>
+  </defs>
+
+  <g id="brand-lockup" fill-rule="evenodd" shape-rendering="geometricPrecision">
+    <g id="mark">
+      <path id="mark-black" fill="#0f0f0e" d="
+        M550 402
+        L577 372
+        C589 360 604 356 622 355
+        C643 354 662 355 682 356
+        C680 342 679 329 680 316
+        C681 294 688 276 701 258
+        L758 201
+        C773 186 791 180 813 180
+        C844 181 869 191 889 210
+        C907 228 918 251 922 278
+        C927 312 916 339 893 362
+        L857 398
+        C839 416 815 423 792 422
+        C776 422 762 418 752 411
+        L748 378
+        C760 383 773 386 786 386
+        C800 386 812 382 822 375
+        L869 331
+        C882 318 888 303 888 288
+        C888 274 884 262 876 252
+        L776 351
+        L751 328
+        L849 228
+        C838 220 826 216 812 216
+        C796 216 783 222 772 232
+        L732 273
+        C718 287 715 303 717 328
+        L724 399
+        L650 394
+        C633 393 617 396 603 403
+        C588 407 569 404 550 402 Z"/>
+      <path id="mark-energy-slash" fill="url(#gold)" d="M751 327 L851 226 L877 250 L775 351 Z"/>
+      <path id="mark-energy-tail" fill="url(#gold)" d="
+        M696 420 L733 422
+        C742 439 746 458 746 477
+        C746 497 739 512 725 526
+        L706 544 L707 476
+        C707 454 703 435 696 420 Z"/>
+      <path id="mark-draw-path" pathLength="1" fill="none" stroke="#0f0f0e" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity="0" d="
+        M565 389
+        C610 374 663 379 702 381
+        C699 349 695 318 704 289
+        C710 270 724 255 746 233
+        L771 208
+        C798 183 839 187 868 208
+        C898 229 908 269 900 305
+        C896 325 885 342 869 357
+        L842 384
+        C820 405 789 409 764 396"/>
+      <path id="energy-guide" pathLength="1" fill="none" stroke="#f8c63e" stroke-width="11" stroke-linecap="round" opacity="0" d="M719 497 C720 448 731 400 754 359 L863 244"/>
+    </g>
+
+    <g id="wordmark">
+      <g id="letter-e1">
+        <path fill="#0f0f0e" d="M214 634 H305 V653 H233 V673 L215 674 Z M215 709 L233 710 V731 H305 V749 H214 Z"/>
+        <path id="accent-e1" fill="url(#gold)" d="M220 684 H291 V700 H219 L214 690 Z"/>
+      </g>
+      <g id="letter-l">
+        <path fill="#0f0f0e" d="M369 634 H389 L388 731 H456 V749 H369 Z"/>
+      </g>
+      <g id="letter-t">
+        <path fill="#0f0f0e" d="M494 634 H594 L593 653 H554 L553 749 H534 V653 H494 Z"/>
+      </g>
+      <g id="letter-o">
+        <path fill="#0f0f0e" d="
+          M660 655
+          C672 640 690 630 709 628
+          C734 630 754 643 766 662
+          C778 681 778 700 770 716
+          C762 720 754 721 745 718
+          C753 708 756 696 754 682
+          C752 667 743 655 732 650
+          C718 643 703 643 690 648 Z
+          M681 660
+          C673 670 669 681 669 694
+          C670 712 681 726 698 731
+          C714 736 729 734 742 730
+          L764 727
+          C759 738 750 746 739 751
+          C719 759 696 757 679 748
+          C660 737 649 718 648 695
+          C648 693 648 691 649 689
+          L670 689
+          C670 677 674 667 681 660 Z"/>
+        <path id="accent-o-left" fill="url(#gold)" d="M681 660 C672 662 662 664 653 667 C650 674 648 681 649 689 H670 C670 678 673 668 681 660 Z"/>
+        <path id="accent-o-tail" fill="url(#gold)" d="M723 733 C738 733 752 730 764 727 C760 735 753 741 744 745 Z"/>
+      </g>
+      <g id="letter-n">
+        <path fill="#0f0f0e" d="M841 634 H860 L921 714 L922 634 H941 V749 H923 L862 669 L861 749 H841 Z"/>
+      </g>
+      <g id="letter-e2">
+        <path fill="#0f0f0e" d="M1008 634 H1098 V652 L1026 653 V673 L1008 674 Z M1008 709 L1026 710 V731 H1098 V749 L1008 750 Z"/>
+        <path id="accent-e2" fill="url(#gold)" d="M1026 683 L1084 684 V700 H1014 L1008 695 V690 L1013 684 Z"/>
+      </g>
+      <g id="letter-x">
+        <path fill="#0f0f0e" d="
+          M1151 634 H1175 L1217 689 L1192 689 Z
+          M1186 699 L1211 690 L1173 749 L1150 750 Z
+          M1220 697 L1229 703 L1228 706 L1260 749 H1237 L1234 746 L1209 713 Z"/>
+        <path id="accent-x" fill="url(#gold)" d="M1237 634 L1260 635 L1221 683 L1210 668 Z"/>
+      </g>
+    </g>
+
+    <path id="tagline" fill="#0f0f0e" d="
+      M436 817 H449 L456 821 V840 L435 842 Z
+      M441 822 V827 H450 L449 822 Z M441 832 V837 L452 835 L451 832 Z
+      M473 818 H479 V835 L487 837 L490 817 L495 818 L494 837 L489 842 H479 L473 835 Z
+      M513 817 L517 818 V842 H512 Z
+      M536 817 L541 818 V837 H553 V842 H535 Z
+      M569 817 L584 818 L590 822 L592 833 L587 840 L568 842 Z
+      M574 822 V837 L585 835 L586 826 Z
+      M628 817 L633 818 L637 833 L644 817 L649 819 L653 833 L658 818 L664 817 L657 841 H650 L645 827 L641 842 H635 Z
+      M680 817 L685 818 V827 H695 V818 L701 818 V842 H695 L696 832 H685 V842 L679 842 Z
+      M726 817 L732 819 L741 842 H736 L734 836 L722 837 L721 842 H716 Z
+      M728 824 L725 832 H731 Z
+      M756 817 L773 818 V822 L765 822 V842 H760 V823 L752 822 V818 Z
+      M789 816 L793 822 L787 828 L786 818 Z
+      M815 817 L826 819 L825 824 L813 823 V826 L827 833 L822 842 L807 840 L808 835 L821 836 L807 827 L808 821 Z
+      M865 817 L874 821 L879 831 L881 817 L886 818 V842 H881 L871 828 L870 842 L864 841 Z
+      M904 817 L922 818 V822 H909 V827 L921 828 L920 832 H909 V837 H922 V842 H904 Z
+      M937 817 L943 818 L947 825 L954 817 L959 818 L951 829 L959 842 H953 L948 834 L942 842 H936 L943 832 Z
+      M974 817 L992 818 V822 H984 V842 H978 V822 H971 Z
+      M1006 835 L1011 838 L1009 842 L1004 841 Z"/>
+  </g>
+</svg>

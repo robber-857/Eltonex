@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="540 160 400 410" role="img" aria-labelledby="title desc">
+  <title id="title">ELTONEX mark</title>
+  <desc id="desc">Black and gold geometric light and motion mark.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#efb423"/>
+      <stop offset="0.56" stop-color="#f8c63e"/>
+      <stop offset="1" stop-color="#f3bc30"/>
+    </linearGradient>
+  </defs>
+  <path fill="#0f0f0e" d="M550 402 577 372c12-12 27-16 45-17 21-1 40 0 60 1-2-14-3-27-2-40 1-22 8-40 21-58l57-57c15-15 33-21 55-21 31 1 56 11 76 30 18 18 29 41 33 68 5 34-6 61-29 84l-36 36c-18 18-42 25-65 24-16 0-30-4-40-11l-4-33c12 5 25 8 38 8 14 0 26-4 36-11l47-44c13-13 19-28 19-43 0-14-4-26-12-36L776 351l-25-23 98-100c-11-8-23-12-37-12-16 0-29 6-40 16l-40 41c-14 14-17 30-15 55l7 71-74-5c-17-1-33 2-47 9-15 4-34 1-53-1Z"/>
+  <path fill="url(#gold)" d="m751 327 100-101 26 24-102 101Z"/>
+  <path fill="url(#gold)" d="m696 420 37 2c9 17 13 36 13 55 0 20-7 35-21 49l-19 18 1-68c0-22-4-41-11-56Z"/>
+</svg>
