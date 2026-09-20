@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ELTONEX is a full-stack development studio building websites, apps, internal systems and AI automation for growing businesses.">
-  <title>ELTONEX — Full-Stack Developer</title>
+  <meta name="description" content="Outsource your website, app or internal system to ELTONEX. One dedicated developer, from your first brief to launch.">
+  <title>ELTONEX — Outsourced Web & Software Development</title>
   <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/hero-cinematic-poster.jpg" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="capability-ticker.css">
 </head>
 <body data-page="home" class="home-v2">
-  <div class="page-curtain" aria-hidden="true"><img src="assets/logo-mark.svg" alt=""></div>
   <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
   <header class="site-header header-over-video" data-header>
     <a class="brand brand-exact" href="index.html" aria-label="ELTONEX home">
-      <img src="assets/wordmark-light.svg" alt="ELTONEX">
+      <img class="brand-rocket" src="assets/logo-mark-light.svg" alt="" width="40" height="41">
+      <img class="brand-wordmark" src="assets/wordmark-light.svg" alt="ELTONEX" width="154" height="21">
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
       <a href="services.html" data-nav="services">Service</a>
@@ -22,150 +26,143 @@
       <a href="contact.html" data-nav="contact">Contact</a>
     </nav>
     <div class="header-actions">
-      <span class="availability"><i></i> Available for select projects</span>
-      <a class="header-cta" href="contact.html">Start a project <span>↗</span></a>
+      <a class="header-cta" href="contact.html">Start a project</a>
     </div>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
       <span></span><span></span>
     </button>
   </header>
 
-  <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" inert>
     <nav aria-label="Mobile navigation">
-      <a href="services.html"><span>01</span>Service</a>
-      <a href="about.html"><span>02</span>About</a>
-      <a href="contact.html"><span>03</span>Contact</a>
+      <a href="services.html">Service</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <p>Sydney / Working worldwide</p>
   </div>
 
   <main>
-    <section class="hero hero-video" aria-labelledby="hero-title">
-      <video class="hero-video-media" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.png" data-hero-video aria-hidden="true">
-        <source src="assets/hero-loop.webm" type="video/webm">
-      </video>
-      <div class="hero-video-scrim" aria-hidden="true"></div>
-      <div class="hero-noise" aria-hidden="true"></div>
-
-      <div class="hero-brand-lockup">
-        <img src="assets/wordmark-light.svg" alt="ELTONEX">
-        <span>BUILD WHAT’S NEXT.</span>
+    <section class="hero hero-launch" aria-labelledby="hero-title">
+      <div class="hero-film-layer" aria-hidden="true">
+        <video class="hero-film" data-hero-film data-film-state="poster" muted loop playsinline preload="none" poster="assets/hero-cinematic-poster.jpg" tabindex="-1" aria-hidden="true">
+          <source data-src="assets/hero-cinematic.mp4" type="video/mp4">
+        </video>
       </div>
+      <div class="hero-film-shade" aria-hidden="true"></div>
 
-      <div class="hero-statement">
-        <p class="eyebrow hero-eyebrow"><span></span> Full-stack developer · Sydney / Worldwide</p>
-        <h1 id="hero-title">From first idea<br><em>to full product.</em></h1>
-        <p class="hero-intro">I design and build complete <strong data-typewriter data-words='["digital products.","business websites.","internal systems.","AI workflows."]'>digital products.</strong> One partner from strategy and interface to engineering and launch.</p>
-      </div>
-
-      <div class="hero-lower">
-        <div class="hero-actions">
-          <a class="button button-light" href="contact.html">Tell me what you’re building <span>↗</span></a>
-          <a class="text-link" href="#selected-work">Selected work <span>↓</span></a>
+      <div class="hero-content">
+        <div class="hero-brand-lockup">
+          <img src="assets/wordmark-light.svg" alt="ELTONEX" width="1050" height="134" fetchpriority="high">
         </div>
-        <div class="hero-disciplines" aria-label="Capabilities">
-          <span>01 / Web</span><span>02 / Apps</span><span>03 / Systems</span><span>04 / AI</span>
+
+        <div class="hero-statement">
+          <h1 id="hero-title">Build what’s<br><em>next.</em></h1>
+          <p class="hero-intro">
+            <span class="hero-description" data-typewriter>
+              <span class="type-reserve">Your development partner. Websites, apps and systems, from brief to launch.</span>
+              <span class="type-visual" aria-hidden="true"><span data-type-content></span><span class="type-cursor"></span></span>
+            </span>
+          </p>
+        </div>
+
+        <div class="hero-lower">
+          <div class="hero-actions">
+            <a class="button button-light" href="contact.html">Discuss your project</a>
+            <a class="text-link" href="#selected-work">View work</a>
+          </div>
         </div>
       </div>
 
-      <a class="hero-scroll" href="#services-preview"><span>Scroll</span><i></i></a>
-      <button class="video-control" type="button" data-video-control aria-label="Pause background motion" aria-pressed="false"><i></i><span>Pause motion</span></button>
     </section>
 
     <div class="capability-ticker" aria-label="Capabilities">
       <div class="ticker-track">
-        <span>Websites</span><i>✦</i><span>Apps</span><i>✦</i><span>Internal systems</span><i>✦</i><span>AI automation</span><i>✦</i>
-        <span aria-hidden="true">Websites</span><i aria-hidden="true">✦</i><span aria-hidden="true">Apps</span><i aria-hidden="true">✦</i><span aria-hidden="true">Internal systems</span><i aria-hidden="true">✦</i><span aria-hidden="true">AI automation</span><i aria-hidden="true">✦</i>
+        <div class="ticker-item"><span>Websites</span><i aria-hidden="true">✦</i></div>
+        <div class="ticker-item"><span>Apps</span><i aria-hidden="true">✦</i></div>
+        <div class="ticker-item"><span>Internal systems</span><i aria-hidden="true">✦</i></div>
+        <div class="ticker-item"><span>AI automation</span><i aria-hidden="true">✦</i></div>
       </div>
     </div>
 
     <section class="services-preview section-dark" id="services-preview">
       <div class="section-heading reveal">
-        <p class="section-index">01 / WHAT I BUILD</p>
-        <h2>One developer.<br>Four ways to move forward.</h2>
+        <h2>One developer. <br>Four ways to move forward.</h2>
         <p>Strategy, design and engineering stay in one conversation from first sketch to launch.</p>
+        <a class="text-link" href="services.html">Explore services</a>
       </div>
       <div class="service-list">
         <a class="service-row reveal" href="services.html#websites">
-          <span class="service-number">01</span>
           <h3>Business websites</h3>
           <p>High-impact sites that make your offer clear and turn attention into enquiries.</p>
-          <span class="row-arrow">↗</span>
         </a>
         <a class="service-row reveal" href="services.html#apps">
-          <span class="service-number">02</span>
           <h3>Web & mobile apps</h3>
           <p>Focused products with intuitive journeys, reliable foundations and room to grow.</p>
-          <span class="row-arrow">↗</span>
         </a>
         <a class="service-row reveal" href="services.html#systems">
-          <span class="service-number">03</span>
           <h3>Internal systems</h3>
           <p>Purpose-built tools that replace spreadsheets, handoffs and operational friction.</p>
-          <span class="row-arrow">↗</span>
         </a>
         <a class="service-row reveal" href="services.html#automation">
-          <span class="service-number">04</span>
           <h3>AI automation</h3>
           <p>Practical SOP workflows that connect your tools and give repetitive work back to software.</p>
-          <span class="row-arrow">↗</span>
         </a>
       </div>
     </section>
 
     <section class="work-section" id="selected-work">
       <div class="section-heading section-heading-light reveal">
-        <p class="section-index">02 / SELECTED WORK</p>
-        <h2>Built for very different<br>business realities.</h2>
+        <h2>Built for very different <br>business realities.</h2>
         <p>From AI performance technology to considered commerce—each solution starts with the business, not a template.</p>
       </div>
 
-      <div class="project project-large reveal">
+      <div class="project-grid">
+      <article class="project reveal">
         <a class="project-media" href="https://apexsportai.com/" target="_blank" rel="noreferrer" aria-label="View Apex Sport AI live website">
           <img src="assets/apex-home.png" alt="Apex Sport AI website home page">
           <span class="project-visit">View live <b>↗</b></span>
         </a>
         <div class="project-meta">
-          <div><span>01</span><h3>Apex Sport AI</h3></div>
+          <div><h3>Apex Sport AI</h3></div>
           <p>AI basketball performance platform</p>
           <p class="project-tags">Strategy · UI/UX · Development · AI</p>
         </div>
-      </div>
+      </article>
 
-      <div class="project project-offset reveal">
+      <article class="project reveal">
         <a class="project-media" href="https://tisofu.com.au/" target="_blank" rel="noreferrer" aria-label="View Tisofu live website">
           <img src="assets/tisofu-home.png" alt="Tisofu ecommerce website home page">
           <span class="project-visit">View live <b>↗</b></span>
         </a>
         <div class="project-meta">
-          <div><span>02</span><h3>Tisofu</h3></div>
+          <div><h3>Tisofu</h3></div>
           <p>Australian lifestyle ecommerce</p>
           <p class="project-tags">Shopify · Art direction · Development</p>
         </div>
+      </article>
       </div>
     </section>
 
     <section class="process-section">
       <div class="process-intro reveal">
-        <p class="section-index">03 / HOW WE WORK</p>
         <h2>Clear process.<br>Fewer surprises.</h2>
-        <a class="text-link" href="services.html#process">See the full process <span>↗</span></a>
+        <a class="text-link" href="services.html#process">See the full process</a>
       </div>
       <ol class="process-steps">
-        <li class="reveal"><span>01</span><h3>Find the leverage</h3><p>We define the real business problem, the audience and what success looks like.</p></li>
-        <li class="reveal"><span>02</span><h3>Make it tangible</h3><p>You see the structure, visual direction and core interactions before the heavy build.</p></li>
-        <li class="reveal"><span>03</span><h3>Build, test, launch</h3><p>I engineer the experience, keep feedback loops short and stay close through release.</p></li>
+        <li class="reveal"><h3>Find the leverage</h3><p>We define the real business problem, the audience and what success looks like.</p></li>
+        <li class="reveal"><h3>Make it tangible</h3><p>You see the structure, visual direction and core interactions before the heavy build.</p></li>
+        <li class="reveal"><h3>Build, test, launch</h3><p>I engineer the experience, keep feedback loops short and stay close through release.</p></li>
       </ol>
     </section>
 
     <section class="about-teaser section-dark">
       <div class="about-statement reveal">
-        <p class="section-index">04 / THE PERSON BEHIND THE WORK</p>
         <blockquote>“Good software should make the next decision easier.”</blockquote>
       </div>
       <div class="about-copy reveal">
         <p>I’m Elton—a full-stack developer who works directly with business owners. That means less translation, faster decisions and one person accountable for the details.</p>
-        <a class="button button-light" href="about.html">More about me <span>↗</span></a>
+        <a class="button button-light" href="about.html">More about me</a>
       </div>
     </section>
 
@@ -185,5 +182,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="hero-film.js"></script>
+  <script src="capability-ticker.js"></script>
 </body>
 </html>

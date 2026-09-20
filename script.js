@@ -4,9 +4,8 @@
   const progress = document.querySelector('[data-scroll-progress]');
   const menuToggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('[data-mobile-menu]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const heroVideo = document.querySelector('[data-hero-video]');
-  const videoControl = document.querySelector('[data-video-control]');
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const reduceMotion = motionPreference.matches;
 
   document.querySelectorAll('[data-year]').forEach((node) => {
     node.textContent = new Date().getFullYear();
@@ -28,34 +27,42 @@
   window.addEventListener('scroll', syncScroll, { passive: true });
 
   if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+    mobileMenu.id ||= 'mobile-navigation';
+    menuToggle.setAttribute('aria-controls', mobileMenu.id);
+    const setMenuOpen = (open, restoreFocus = false) => {
       menuToggle.setAttribute('aria-expanded', String(open));
       menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       mobileMenu.classList.toggle('open', open);
       mobileMenu.setAttribute('aria-hidden', String(!open));
+      mobileMenu.inert = !open;
       body.classList.toggle('menu-open', open);
+      if (open) mobileMenu.querySelector('a[href]')?.focus();
+      else if (restoreFocus) menuToggle.focus();
+    };
+    setMenuOpen(false);
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
     });
-  }
-
-  if (heroVideo) {
-    if (reduceMotion) heroVideo.pause();
-    heroVideo.addEventListener('canplay', () => body.classList.add('video-ready'), { once: true });
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) heroVideo.pause();
-      else if (!reduceMotion && videoControl?.getAttribute('aria-pressed') !== 'true') heroVideo.play().catch(() => {});
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a[href]')) setMenuOpen(false);
     });
-  }
-
-  if (heroVideo && videoControl) {
-    videoControl.addEventListener('click', () => {
-      const paused = !heroVideo.paused;
-      if (paused) heroVideo.pause();
-      else heroVideo.play().catch(() => {});
-      videoControl.setAttribute('aria-pressed', String(paused));
-      videoControl.setAttribute('aria-label', paused ? 'Play background motion' : 'Pause background motion');
-      const label = videoControl.querySelector('span');
-      if (label) label.textContent = paused ? 'Play motion' : 'Pause motion';
+    document.addEventListener('keydown', (event) => {
+      if (menuToggle.getAttribute('aria-expanded') !== 'true') return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuOpen(false, true);
+      } else if (event.key === 'Tab') {
+        const controls = [menuToggle, ...mobileMenu.querySelectorAll('a[href], button:not([disabled])')];
+        const index = controls.indexOf(document.activeElement);
+        const nextIndex = event.shiftKey
+          ? (index <= 0 ? controls.length - 1 : index - 1)
+          : (index + 1) % controls.length;
+        event.preventDefault();
+        controls[nextIndex]?.focus();
+      }
+    });
+    window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
     });
   }
 
@@ -75,28 +82,64 @@
   }
 
   const typeNode = document.querySelector('[data-typewriter]');
-  if (typeNode && !reduceMotion) {
-    let words;
-    try { words = JSON.parse(typeNode.dataset.words); } catch { words = ['websites.', 'apps.', 'systems.', 'AI workflows.']; }
-    let wordIndex = 0;
-    let charIndex = words[0].length;
-    let deleting = true;
-    const tick = () => {
-      const current = words[wordIndex];
-      charIndex += deleting ? -1 : 1;
-      typeNode.textContent = current.slice(0, charIndex);
-      let delay = deleting ? 42 : 72;
-      if (!deleting && charIndex === current.length) {
-        deleting = true;
-        delay = 1500;
-      } else if (deleting && charIndex === 0) {
-        deleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        delay = 260;
-      }
-      window.setTimeout(tick, delay);
+  const typeReserve = typeNode?.querySelector('.type-reserve');
+  const typeContent = typeNode?.querySelector('[data-type-content]');
+  if (typeNode && typeReserve && typeContent) {
+    // The complete, accessible copy also reserves the paragraph's final layout.
+    const characters = Array.from(typeReserve.textContent.trim());
+    let charIndex = 0;
+    let timer = null;
+    let visible = !('IntersectionObserver' in window);
+    let complete = false;
+    let typeObserver;
+    const stop = () => {
+      window.clearTimeout(timer);
+      timer = null;
     };
-    window.setTimeout(tick, 2200);
+    const finish = () => {
+      stop();
+      complete = true;
+      typeContent.textContent = characters.join('');
+      typeNode.classList.remove('is-typing');
+      typeNode.classList.add('is-typed');
+      typeObserver?.disconnect();
+      document.removeEventListener('visibilitychange', syncTyping);
+      motionPreference.removeEventListener('change', syncTyping);
+    };
+    const tick = () => {
+      timer = null;
+      if (complete || document.hidden || !visible) return;
+      charIndex += 1;
+      typeContent.textContent = characters.slice(0, charIndex).join('');
+      if (charIndex >= characters.length) {
+        finish();
+        return;
+      }
+      const lastCharacter = characters[charIndex - 1];
+      const delay = /[.!?]/.test(lastCharacter) ? 170 : /[,;:]/.test(lastCharacter) ? 70 : 26;
+      timer = window.setTimeout(tick, delay);
+    };
+    const syncTyping = () => {
+      if (complete) return;
+      if (motionPreference.matches) {
+        finish();
+      } else if (document.hidden || !visible) {
+        stop();
+      } else if (timer === null) {
+        typeNode.classList.add('is-typing');
+        tick();
+      }
+    };
+    if (!visible) {
+      typeObserver = new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        syncTyping();
+      }, { threshold: .15 });
+      typeObserver.observe(typeNode);
+    }
+    document.addEventListener('visibilitychange', syncTyping);
+    motionPreference.addEventListener('change', syncTyping);
+    syncTyping();
   }
 
   const portraitScene = document.querySelector('[data-portrait-scene]');

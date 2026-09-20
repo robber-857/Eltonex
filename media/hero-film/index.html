@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1600, height=900" />
+    <title>ELTONEX — Gold Horizon</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1600px;
+        height: 900px;
+        overflow: hidden;
+        background: #1c1e1b;
+      }
+      #root {
+        position: relative;
+        width: 1600px;
+        height: 900px;
+        overflow: hidden;
+      }
+      #studio-film {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 1600px;
+        height: 900px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="hero-film"
+      data-no-timeline
+      data-start="0"
+      data-duration="12"
+      data-width="1600"
+      data-height="900"
+    >
+      <canvas id="studio-film" class="clip" data-start="0" data-duration="12" data-track-index="0" aria-label="The ELTONEX rocket sculpture hovering above a basalt landscape at a golden horizon"></canvas>
+    </div>
+    <script type="module" src="film.js"></script>
+  </body>
+</html>

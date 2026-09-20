@@ -1,0 +1,76 @@
+.home-v2 .capability-ticker {
+  overflow: hidden;
+  padding: 20px 0;
+  color: #171813;
+  background: #f2efe5;
+  border-top: 1px solid rgb(163 132 57 / 22%);
+  border-bottom: 1px solid rgb(163 132 57 / 22%);
+}
+
+.home-v2 .capability-ticker > .ticker-track {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 100%;
+  column-gap: clamp(28px, 4vw, 64px);
+  row-gap: 16px;
+  padding: 0;
+  transform: none;
+  animation: none;
+}
+
+.home-v2 .capability-ticker > .ticker-track > .ticker-item {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 36px);
+  width: max-content;
+  padding: 0;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.home-v2 .capability-ticker > .ticker-track > .ticker-item > span {
+  padding: 0;
+  font-family: inherit;
+  font-size: clamp(12px, 1.05vw, 15px);
+  font-weight: 600;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.home-v2 .capability-ticker > .ticker-track > .ticker-item > i {
+  color: #987217;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1;
+}
+
+.home-v2 .capability-ticker.is-looping > .ticker-track {
+  display: block;
+  overflow: hidden;
+}
+
+.home-v2 .capability-ticker.is-looping > .ticker-track > .ticker-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home-v2 .capability-ticker[data-ticker-state="playing"] > .ticker-track > .ticker-item {
+  will-change: transform;
+}
+
+.home-v2 .capability-ticker > .ticker-track > .ticker-wrap-copy[hidden],
+.home-v2 .capability-ticker:not(.is-looping) > .ticker-track > .ticker-wrap-copy {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-v2 .capability-ticker > .ticker-track > .ticker-item {
+    will-change: auto;
+  }
+}

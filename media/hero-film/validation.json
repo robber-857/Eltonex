@@ -1,0 +1,45 @@
+{
+  "composition": "hero-film",
+  "hyperframesVersion": "0.8.47",
+  "hyperframesCheck": {
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "samples": [
+      0,
+      6,
+      11.958333
+    ]
+  },
+  "capture": "Deterministic hf-seek through local Playwright, local FFmpeg encoding",
+  "fallbackReason": "HyperFrames render Chrome --version preflight exits 21 on Windows; the same Chrome works for HyperFrames check and Playwright capture",
+  "sourceSeam": {
+    "times": [
+      0,
+      12
+    ],
+    "byteIdenticalScreenshots": true
+  },
+  "video": {
+    "file": "assets/hero-cinematic.mp4",
+    "durationSeconds": 12,
+    "width": 1600,
+    "height": 900,
+    "fps": 24,
+    "frames": 288,
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "bytes": 804354,
+    "audioStreams": 0
+  },
+  "poster": {
+    "file": "assets/hero-cinematic-poster.jpg",
+    "timeSeconds": 6,
+    "bytes": 74369
+  },
+  "runtimeErrors": [],
+  "telemetry": false,
+  "published": false,
+  "artDirection": "Gold Horizon: exact ELTONEX rocket monument above dark terrain and a warm horizon",
+  "exactOriginalSvgPaths": true
+}
