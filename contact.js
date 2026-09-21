@@ -3,6 +3,8 @@
   if (!form) return;
   const button = form.querySelector('[type="submit"]');
   const status = form.querySelector('[data-form-status]');
+  const successDialog = document.querySelector('[data-enquiry-success]');
+  successDialog.addEventListener('close', () => button.focus({ preventScroll: true }));
   let requestId, lastPayload;
   function feedback(message, error = false) {
     status.textContent = message;
@@ -31,7 +33,8 @@
         throw new Error(result.error || 'Your enquiry could not be saved. Please try again.');
       }
       form.reset(); requestId = null; lastPayload = null;
-      feedback('Thank you. Your enquiry has been received. I’ll reply within 1–2 business days.');
+      feedback('Thank you. Your project details have been received. I’ll reply by email within 1–2 business days.');
+      successDialog.showModal();
     } catch (error) {
       feedback(error.name === 'TimeoutError' || error instanceof TypeError ? 'We could not confirm your submission. Please retry, or email eltonw482@gmail.com.' : error.message, true);
     } finally { button.disabled = false; form.removeAttribute('aria-busy'); }

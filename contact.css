@@ -69,3 +69,18 @@
  .contact-page .form-privacy { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.7; color: #606258; }
  .contact-page [data-form-status][data-error='true'] { color: #972f24; }
  .contact-page button:disabled { opacity: .55; cursor: not-allowed; }
+
+.enquiry-success { width: min(480px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: clamp(24px, 5vw, 40px); overflow-y: auto; border: 0; border-radius: 24px; color: var(--ink); background: #f7f6f2; box-shadow: 0 24px 80px #11130f33; }
+.enquiry-success::backdrop { background: #11130f99; }
+.enquiry-success[open] { animation: enquiry-success-enter .2s ease-out; }
+.enquiry-success-mark { display: grid; place-items: center; width: 56px; height: 56px; margin-bottom: 24px; border-radius: 50%; background: #f3e5bd; color: #795b18; }
+.enquiry-success-mark svg { width: 32px; height: 32px; }
+.enquiry-success .content-label { font-size: 10px; line-height: 1.6; }
+.contact-page .enquiry-success h2 { margin: 16px 0; font-size: clamp(28px, 6vw, 36px); line-height: 1.15; }
+.enquiry-success > p:last-of-type { margin: 0; color: #5c5e55; font-size: 16px; line-height: 1.75; }
+.enquiry-success form { margin-top: 28px; }
+.enquiry-success .button { display: flex; justify-content: space-between; width: 100%; min-height: 48px; padding: 14px 20px; font-size: 14px; }
+.enquiry-success .button:focus-visible { outline: 2px solid #8a691c; outline-offset: 4px; }
+html:has(.enquiry-success[open]) { overflow: hidden; }
+@keyframes enquiry-success-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .enquiry-success[open] { animation: none; } }
