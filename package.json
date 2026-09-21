@@ -6,12 +6,17 @@
     "node": ">=24.14.0"
   },
   "scripts": {
+    "build": "node scripts/build-static.cjs",
+    "build:edge": "node scripts/bundle-edge.cjs",
     "start": "node --env-file-if-exists=.env server/start.cjs",
     "admin:password": "node server/password.cjs",
-    "test": "node --test server/*.test.cjs"
+    "test": "node --test server/*.test.cjs tests/*.test.mjs"
   },
   "dependencies": {
     "express": "^5.1.0",
     "nodemailer": "10.0.10"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
   }
 }

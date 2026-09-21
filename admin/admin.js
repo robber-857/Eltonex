@@ -20,9 +20,9 @@
     const dl = document.createElement('dl');
     for (const [key, value] of [['Received', date(row.created_at)], ['Services', row.services.join(', ') || 'Not specified'], ['Timing', row.timing || 'Not specified'], ['Notification', row.notification === 'pending' && !notificationsConfigured ? 'Waiting for email setup' : row.notification]]) dl.append(element('dt', key), element('dd', value));
     panel.append(dl, element('p', row.message, 'message'));
-    if (row.notification === 'failed' && notificationsConfigured) {
-      const retry = element('button', 'Retry email notification');
-      retry.addEventListener('click', async () => { retry.disabled = true; try { await api(`/api/admin/enquiries/${row.id}/retry`, {method: 'POST', body: '{}'}); await load(); message('Notification queued for retry.'); } catch (error) { message(error.message, true); } finally { retry.disabled = false; } });
+    if (['pending', 'failed', 'sending'].includes(row.notification) && notificationsConfigured) {
+      const retry = element('button', 'Send / retry email notification');
+      retry.addEventListener('click', async () => { retry.disabled = true; try { await api(`/api/admin/enquiries/${row.id}/retry`, {method: 'POST', body: '{}'}); await load(); message('Notification requested. Check its delivery status.'); } catch (error) { message(error.message, true); } finally { retry.disabled = false; } });
       panel.append(retry);
     }
     const form = document.createElement('form'), statusLabel = element('label', 'Follow-up status'), select = document.createElement('select');
@@ -57,7 +57,7 @@
   async function workspace() {
     const session = await api('/api/admin/session'); notificationsConfigured = session.notificationsConfigured;
     $('#login-panel').hidden = true; $('#inbox').hidden = false; $('#logout').hidden = false;
-    $('#notification-note').textContent = notificationsConfigured ? 'Email notifications are configured. Check each enquiry for delivery status.' : 'Enquiries are saved here. Email notifications will start once SMTP is configured on the server.';
+    $('#notification-note').textContent = notificationsConfigured ? 'New enquiries trigger email notifications. Check delivery status here and retry any pending or failed notifications.' : 'Enquiries are saved here. Email notifications are not configured yet.';
     await load(); message('');
   }
   $('#login-form').addEventListener('submit', async event => {

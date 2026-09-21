@@ -128,6 +128,8 @@ function createApp(config) {
   });
   app.post('/api/admin/enquiries/:id/retry', (req, res) => {
     if (!config.sendMail) return res.status(503).json({ error: 'Configure SMTP on the server first.' });
+    const existing = db.prepare('SELECT notification FROM enquiries WHERE id = ?').get(req.params.id);
+    if (existing?.notification === 'pending') return res.json({ ok: true });
     const result = db.prepare("UPDATE enquiries SET notification = 'pending', attempts = 0, next_attempt = 0 WHERE id = ? AND notification = 'failed'").run(req.params.id);
     if (!result.changes) return res.status(409).json({ error: 'Only a failed notification can be retried.' });
     res.json({ ok: true });

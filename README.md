@@ -2,6 +2,8 @@
 
 Multi-page ELTONEX website with a private enquiry inbox and optional SMTP notifications.
 
+For production on **Vercel + Supabase**, follow [DEPLOYMENT.md](DEPLOYMENT.md). `vercel.json` routes the API to Supabase project `gssdsqqjzqbosrswytak`; `supabase/` contains the Postgres migration, Supabase Auth administrator access and Edge Function with Resend notifications. `npm run build` exports only public files to `dist/`. The Node/SQLite server below remains available for local development.
+
 ## Preview locally
 
 Use Node.js 24.14 or later. Run the website and Contact backend together:

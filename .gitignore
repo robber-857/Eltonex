@@ -1,5 +1,9 @@
 output/
 node_modules/
+dist/
+.vercel/
+supabase/.temp/
+supabase/.branches/
 data/
 *.sqlite
 *.sqlite-shm

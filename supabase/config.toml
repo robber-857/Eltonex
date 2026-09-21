@@ -1,0 +1,7 @@
+project_id = "eltonex"
+
+[functions.site-api]
+# Contact and login must accept unauthenticated visitors. Every admin route
+# separately validates the Supabase Auth user, session and administrator list.
+verify_jwt = false
+entrypoint = "./functions/site-api/index.ts"
