@@ -1,5 +1,6 @@
 (() => {
   const $ = selector => document.querySelector(selector);
+  const PAGE_SIZE = 5;
   let page = 1, selectedId = null, items = [], notificationsConfigured = false, loading = false;
   function message(text, error = false) { $('#status').textContent = text; $('#status').dataset.error = String(error); }
   function loginView() { $('#login-panel').hidden = false; $('#inbox').hidden = true; $('#logout').hidden = true; $('#enquiries').replaceChildren(); $('#detail').replaceChildren(); items = []; }
@@ -31,6 +32,21 @@
     const actions = element('div', '', 'detail-actions'), save = element('button', 'Save changes', 'primary'); save.type = 'submit';
     const reply = element('a', 'Reply by email ↗'); reply.href = `mailto:${encodeURIComponent(row.email)}?subject=${encodeURIComponent('Re: Your ELTONEX project enquiry')}`;
     actions.append(save, reply); form.append(statusLabel, notesLabel, actions); panel.append(form);
+    const remove = element('button', 'Delete enquiry', 'delete-enquiry');
+    remove.type = 'button';
+    remove.addEventListener('click', async () => {
+      if (loading || !window.confirm(`Delete the enquiry from ${row.name}? This permanently removes its details and notes and cannot be undone.`)) return;
+      remove.disabled = true;
+      try {
+        await api(`/api/admin/enquiries/${row.id}`, { method: 'DELETE' });
+        selectedId = null;
+        panel.replaceChildren(element('p', 'Enquiry deleted.', 'muted'));
+        await load();
+        message('Enquiry deleted.');
+      } catch (error) { message(error.message, true); }
+      finally { remove.disabled = false; }
+    });
+    panel.append(remove);
     form.addEventListener('submit', async event => { event.preventDefault(); save.disabled = true; try { await api(`/api/admin/enquiries/${row.id}`, { method: 'PATCH', body: JSON.stringify({status: select.value, notes: notes.value}) }); await load(); message('Changes saved.'); } catch (error) { message(error.message, true); } finally { save.disabled = false; } });
   }
   async function load() {
@@ -38,10 +54,16 @@
     loading = true;
     try {
       const params = new URLSearchParams(new FormData($('#filters'))); params.set('page', page);
-      const result = await api(`/api/admin/enquiries?${params}`); items = result.items;
+      let result = await api(`/api/admin/enquiries?${params}`);
+      const lastPage = Math.max(1, Math.ceil(result.total / PAGE_SIZE));
+      if (page > lastPage) {
+        page = lastPage; params.set('page', page);
+        result = await api(`/api/admin/enquiries?${params}`);
+      }
+      items = result.items;
       $('#count').textContent = `${result.total} ${result.total === 1 ? 'enquiry' : 'enquiries'}`;
-      $('#page-number').textContent = `Page ${page} of ${Math.max(1, Math.ceil(result.total / 20))}`;
-      $('#previous').disabled = page <= 1; $('#next').disabled = page * 20 >= result.total;
+      $('#page-number').textContent = `Page ${page} of ${Math.max(1, Math.ceil(result.total / PAGE_SIZE))}`;
+      $('#previous').disabled = page <= 1; $('#next').disabled = page * PAGE_SIZE >= result.total;
       $('#enquiries').replaceChildren();
       if (!items.length) $('#enquiries').append(element('p', 'No enquiries match this view.', 'muted'));
       for (const row of items) {
@@ -65,9 +87,9 @@
     try { const data = new FormData(event.target); await api('/api/admin/login', {method: 'POST', body: JSON.stringify(Object.fromEntries(data))}); event.target.reset(); await workspace(); } catch (error) { message(error.message, true); } finally { button.disabled = false; }
   });
   $('#logout').addEventListener('click', async () => { try { await api('/api/admin/logout', {method: 'POST', body: '{}'}); loginView(); message('Signed out.'); } catch (error) { message(error.message, true); } });
-  $('#filters').addEventListener('submit', event => { event.preventDefault(); page = 1; load().catch(error => message(error.message, true)); });
+  $('#filters').addEventListener('submit', event => { event.preventDefault(); if (loading) return; page = 1; load().catch(error => message(error.message, true)); });
   $('#refresh').addEventListener('click', () => load().catch(error => message(error.message, true)));
-  $('#previous').addEventListener('click', () => { if (page > 1) page--; load().catch(error => message(error.message, true)); });
-  $('#next').addEventListener('click', () => { page++; load().catch(error => message(error.message, true)); });
+  $('#previous').addEventListener('click', () => { if (loading) return; if (page > 1) page--; load().catch(error => message(error.message, true)); });
+  $('#next').addEventListener('click', () => { if (loading) return; page++; load().catch(error => message(error.message, true)); });
   workspace().catch(error => { loginView(); message(error.message === 'Please sign in.' ? '' : error.message, error.message !== 'Please sign in.'); });
 })();

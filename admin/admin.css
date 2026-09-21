@@ -10,6 +10,8 @@ p { margin: 0 0 18px; } a { color: inherit; text-underline-offset: 4px; overflow
 button, input, select, textarea { font: inherit; } button { cursor: pointer; min-height: 44px; padding: 9px 18px; border: 1px solid #c9c9bb; border-radius: 9px; background: transparent; color: inherit; }
 button:hover { background: #e9e6dc; } button:disabled { opacity: .5; cursor: not-allowed; }
 button.primary { background: #202722; color: white; border-color: #202722; }
+.delete-enquiry { margin-top: 28px; color: #982f29; border-color: #d5b5b1; }
+.delete-enquiry:hover { background: #f9eeec; }
 :focus-visible { outline: 2px solid #8a611b; outline-offset: 3px; }
 label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
 input, select, textarea { width: 100%; min-width: 0; padding: 12px; border: 1px solid #c7c9bd; border-radius: 8px; background: white; color: #1b211e; font-size: 16px; }

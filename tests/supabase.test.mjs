@@ -37,8 +37,14 @@ function setup(overrides = {}) {
       return Response.json(sessions.filter(row=>resource.includes(row.token_hash) && Date.parse(row.expires_at)>Date.now()));
     }
     if (resource?.startsWith('eltonex_enquiries?')) {
+      const query = new URL(url).searchParams;
+      if (options.method==='DELETE') {
+        const index = rows.findIndex(row => `eq.${row.id}` === query.get('id'));
+        return Response.json(index < 0 ? [] : rows.splice(index,1));
+      }
       if (options.method==='PATCH') { Object.assign(rows[0],body); return options.headers.Prefer ? Response.json([rows[0]]) : new Response(null,{status:204}); }
-      return Response.json(rows, {headers:{'content-range':`0-${rows.length-1}/${rows.length}`}});
+      const offset = Number(query.get('offset') || 0), limit = Number(query.get('limit') || rows.length);
+      return Response.json(rows.slice(offset,offset+limit), {headers:{'content-range':`0-${rows.length-1}/${rows.length}`}});
     }
     throw new Error(`Unexpected test request ${resource}`);
   };
@@ -81,6 +87,27 @@ test('edge admin requires Auth, allowlist and active session; cookies are privat
   f.setAuth(false); assert.equal((await f.request('/admin/enquiries','GET',undefined,cookie)).status,401); f.setAuth(true);
   assert.equal((await f.request('/admin/logout','POST',{},cookie)).status,200);
   assert.equal((await f.request('/admin/session','GET',undefined,cookie)).status,401);
+});
+
+test('edge inbox uses five-item pages and deletion requires an admin and trusted origin',async()=>{
+  const f=setup();
+  for(let i=0;i<6;i++) await f.request('/enquiries','POST',enquiry());
+  const login=await f.request('/admin/login','POST',{email:'owner@example.test',password:'correct-test-password'});
+  const cookie=login.headers.get('set-cookie');
+  const first=await (await f.request('/admin/enquiries?page=1','GET',undefined,cookie)).json();
+  const second=await (await f.request('/admin/enquiries?page=2','GET',undefined,cookie)).json();
+  assert.equal(first.items.length,5); assert.equal(second.items.length,1); assert.equal(first.total,6);
+  assert.equal(new Set([...first.items,...second.items].map(row=>row.id)).size,6);
+  const route=`/admin/enquiries/${second.items[0].id}`;
+  assert.equal((await f.request(route,'DELETE')).status,401);
+  assert.equal((await f.request(route,'DELETE',undefined,cookie,'https://attacker.test')).status,403);
+  f.setAdmin(false); assert.equal((await f.request(route,'DELETE',undefined,cookie)).status,403); f.setAdmin(true);
+  assert.equal(f.rows.length,6);
+  assert.equal((await f.request(route,'DELETE',undefined,cookie)).status,200);
+  assert.equal((await f.request(route,'DELETE',undefined,cookie)).status,404);
+  const remaining=await (await f.request('/admin/enquiries?page=1','GET',undefined,cookie)).json();
+  assert.equal(remaining.total,5); assert.equal(remaining.items.length,5);
+  assert.ok(!remaining.items.some(row=>row.id===second.items[0].id));
 });
 
 test('Vercel build and edge configuration isolate private source and point to the requested project',async()=>{

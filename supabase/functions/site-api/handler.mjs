@@ -126,7 +126,7 @@ export function createHandler(config, fetcher = fetch) {
         }
         if (request.method === 'GET' && route === '/admin/enquiries') {
           const page = Math.max(1,Math.min(100000,parseInt(url.searchParams.get('page'),10)||1));
-          const query = new URLSearchParams({select:ENQUIRY_FIELDS,order:'created_at.desc,id.desc',limit:'20',offset:String((page-1)*20)});
+          const query = new URLSearchParams({select:ENQUIRY_FIELDS,order:'created_at.desc,id.desc',limit:'5',offset:String((page-1)*5)});
           const status = url.searchParams.get('status'); if (STATUSES.includes(status)) query.set('status',`eq.${status}`);
           const search = (url.searchParams.get('q')||'').slice(0,100).replace(/[\\%_*]/g,' ').trim();
           if (search) query.set('search_text',`ilike.*${search}*`);
@@ -135,6 +135,11 @@ export function createHandler(config, fetcher = fetch) {
         }
         const enquiry = route.match(/^\/admin\/enquiries\/([^/]+)(\/retry)?$/);
         if (enquiry && UUID.test(enquiry[1])) {
+          if (request.method === 'DELETE' && !enquiry[2]) {
+            const result = await db(`eltonex_enquiries?id=eq.${enquiry[1]}`,{method:'DELETE',headers:{Prefer:'return=representation'}});
+            if (!result.data.length) throw new HttpError(404,'Enquiry not found.');
+            return reply({ok:true});
+          }
           if (request.method === 'PATCH' && !enquiry[2]) {
             const notes = clean(body.notes,0,5000);
             if (!STATUSES.includes(body.status) || notes === null) throw new HttpError(400,'Choose a valid status and notes under 5,000 characters.');

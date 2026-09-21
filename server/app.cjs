@@ -41,7 +41,7 @@ function createApp(config) {
   app.use('/api', (req, res, next) => {
     if (!['GET', 'HEAD'].includes(req.method)) {
       if (req.headers.origin !== config.origin) return res.status(403).json({ error: 'Please submit from this website.' });
-      if (!req.is('application/json')) return res.status(415).json({ error: 'JSON required.' });
+      if (req.method !== 'DELETE' && !req.is('application/json')) return res.status(415).json({ error: 'JSON required.' });
     }
     next();
   }, express.json({ limit: '20kb' }));
@@ -116,13 +116,18 @@ function createApp(config) {
     const where = "WHERE (? = '' OR status = ?) AND (? = '' OR instr(lower(name || ' ' || email || ' ' || message), lower(?)) > 0)";
     const args = [status, status, search, search];
     const total = db.prepare(`SELECT count(*) AS count FROM enquiries ${where}`).get(...args).count;
-    const items = db.prepare(`SELECT id, created_at, name, email, services, message, timing, status, notes, notification FROM enquiries ${where} ORDER BY created_at DESC, id DESC LIMIT 20 OFFSET ?`).all(...args, (page - 1) * 20);
+    const items = db.prepare(`SELECT id, created_at, name, email, services, message, timing, status, notes, notification FROM enquiries ${where} ORDER BY created_at DESC, id DESC LIMIT 5 OFFSET ?`).all(...args, (page - 1) * 5);
     res.json({ items: items.map(row => ({ ...row, services: JSON.parse(row.services) })), total, page });
   });
   app.patch('/api/admin/enquiries/:id', (req, res) => {
     const { status, notes } = req.body || {};
     if (!STATUSES.includes(status) || clean(notes, 5000) === null) return res.status(400).json({ error: 'Choose a valid status and notes under 5,000 characters.' });
     const result = db.prepare('UPDATE enquiries SET status = ?, notes = ? WHERE id = ?').run(status, notes.trim(), req.params.id);
+    if (!result.changes) return res.status(404).json({ error: 'Enquiry not found.' });
+    res.json({ ok: true });
+  });
+  app.delete('/api/admin/enquiries/:id', (req, res) => {
+    const result = db.prepare('DELETE FROM enquiries WHERE id = ?').run(req.params.id);
     if (!result.changes) return res.status(404).json({ error: 'Enquiry not found.' });
     res.json({ ok: true });
   });

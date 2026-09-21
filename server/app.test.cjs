@@ -107,15 +107,22 @@ test('without SMTP the enquiry stays queued and admin is informed; login throttl
 test('inbox pagination has no missing records and oversized bodies are rejected', async () => {
   const f = await fixture();
   try {
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < 6; i++) {
       f.db.prepare('DELETE FROM limits').run();
       assert.equal((await f.request('/api/enquiries', 'POST', {...enquiry(), name:`Client ${i}`})).status, 201);
     }
     const cookie = await f.login();
     const first = await (await f.request('/api/admin/enquiries?page=1', 'GET', undefined, cookie)).json();
     const second = await (await f.request('/api/admin/enquiries?page=2', 'GET', undefined, cookie)).json();
-    assert.equal(first.total, 21); assert.equal(first.items.length, 20); assert.equal(second.items.length, 1);
-    assert.equal(new Set([...first.items, ...second.items].map(item => item.id)).size, 21);
+    assert.equal(first.total, 6); assert.equal(first.items.length, 5); assert.equal(second.items.length, 1);
+    assert.equal(new Set([...first.items, ...second.items].map(item => item.id)).size, 6);
+    const route = `/api/admin/enquiries/${second.items[0].id}`;
+    assert.equal((await f.request(route, 'DELETE')).status, 401);
+    assert.equal((await f.request(route, 'DELETE', undefined, cookie, 'https://attacker.test')).status, 403);
+    assert.equal((await f.request(route, 'DELETE', undefined, cookie)).status, 200);
+    assert.equal((await f.request(route, 'DELETE', undefined, cookie)).status, 404);
+    const remaining = await (await f.request('/api/admin/enquiries', 'GET', undefined, cookie)).json();
+    assert.equal(remaining.total, 5); assert.ok(!remaining.items.some(item => item.id === second.items[0].id));
     assert.equal((await f.request('/api/enquiries', 'POST', {...enquiry(), message:'x'.repeat(25000)})).status, 413);
   } finally { await f.stop(); }
 });
