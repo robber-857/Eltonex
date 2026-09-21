@@ -30,6 +30,11 @@ http.createServer((request, response) => {
     return;
   }
   const requested = pathname === '/' ? '/index.html' : pathname;
+  const publicPages = new Set(['index.html', 'about.html', 'contact.html', 'services.html', 'styles.css', 'layout.css', 'hero.css', 'about.css', 'contact.css', 'footer.css', 'services.css', 'capability-ticker.css', 'script.js', 'contact.js', 'services.js', 'hero-film.js', 'hero-scene.js', 'capability-ticker.js']);
+  if (!publicPages.has(requested.slice(1)) && !/^\/assets\/(?!.*(?:^|\/)\.)[^\\]+$/.test(requested)) {
+    response.writeHead(404).end('Not found');
+    return;
+  }
   const filePath = path.resolve(root, `.${requested}`);
   const relativePath = path.relative(root, filePath);
   if (relativePath === '..' || relativePath.startsWith(`..${path.sep}`) || path.isAbsolute(relativePath)) {

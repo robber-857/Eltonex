@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow"><title>Enquiry inbox | ELTONEX</title>
+  <link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/admin/admin.css">
+  <script src="/admin/admin.js" defer></script>
+</head>
+<body>
+  <header><a href="/" aria-label="ELTONEX website"><img src="/assets/wordmark-dark.svg" alt="ELTONEX" width="172" height="24"></a><span>Enquiry inbox</span><button id="logout" hidden>Sign out</button></header>
+  <main>
+    <section id="login-panel" class="login-panel" hidden>
+      <p class="eyebrow">Private workspace</p><h1>Welcome back.</h1><p>Sign in to review and follow up on project enquiries.</p>
+      <form id="login-form"><label>Email<input type="email" name="email" autocomplete="username" required></label><label>Password<input type="password" name="password" autocomplete="current-password" required maxlength="256"></label><button type="submit" class="primary">Sign in</button></form>
+    </section>
+    <section id="inbox" hidden>
+      <div class="page-heading"><div><p class="eyebrow">Project conversations</p><h1>Your enquiries.</h1></div><button id="refresh">Refresh inbox</button></div>
+      <p id="notification-note" class="notice"></p>
+      <form id="filters" class="filters"><label>Search<input type="search" name="q" placeholder="Name, email or project" maxlength="100"></label><label>Status<select name="status"><option value="">All enquiries</option value="new">New</option><option value="contacted">Contacted</option><option value="closed">Closed</option></select></label><button type="submit">Apply filters</button></form>
+      <div class="inbox-grid"><section aria-label="Enquiries"><p id="count" class="muted"></p><div id="enquiries"></div><nav class="pagination" aria-label="Enquiry pages"><button id="previous">Previous</button><span id="page-number"></span><button id="next">Next</button></nav></section>
+      <section id="detail" class="detail" aria-label="Enquiry details"><p class="muted">Select an enquiry to view the details.</p></section></div>
+    </section>
+    <p id="status" role="status" aria-live="polite">Loading your workspace…</p>
+  </main>
+</body>
+</html>

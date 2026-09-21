@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Meet Elton, the full-stack developer behind ELTONEX.">
-  <title>About Elton — Full-Stack Developer</title>
+  <title>About Elton | ELTONEX</title>
   <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="about.css"><link rel="stylesheet" href="footer.css">
 </head>
 <body data-page="about">
   <div class="page-curtain" aria-hidden="true"><img src="assets/logo-mark.svg" alt=""></div>
@@ -18,36 +19,41 @@
   <div class="mobile-menu" data-mobile-menu aria-hidden="true" inert><nav aria-label="Mobile navigation"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><p>Sydney / Working worldwide</p></div>
 
   <main>
-    <section class="about-hero">
-      <div class="about-hero-copy reveal"><p class="eyebrow"><span></span> ABOUT ELTON</p><h1>A direct partner for<br><em>digital work that matters.</em></h1><p>I combine product thinking with full-stack engineering, helping growing businesses move from “we should” to shipped.</p></div>
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-hero-copy reveal"><p class="content-label">About Elton</p><h1 id="about-title">Your development partner.<br><em>From idea to launch.</em></h1><p>I design and build websites, business systems and AI workflows. You work directly with me, from the first conversation to delivery.</p></div>
       <figure class="about-portrait reveal"><div class="about-portrait-bg"></div><img src="assets/elton-portrait.jpg" alt="Portrait of Elton"><figcaption><b>ELTON</b><span>Full-stack developer<br>Sydney, Australia</span></figcaption></figure>
-      <p class="about-vertical" aria-hidden="true">BUILD WHAT’S NEXT.</p>
     </section>
 
-    <section class="about-story">
-      <div class="about-story-label reveal"><p class="section-index">MY APPROACH</p></div>
-      <div class="about-story-main reveal"><h2>Small enough to care about every detail. Experienced enough to see the whole system.</h2></div>
-      <div class="about-story-copy reveal"><p>I work directly with owners and internal teams—asking the questions that reveal what the product really needs to do, then translating that into an experience people can understand and software a business can rely on.</p><p>The goal is never technology for its own sake. It’s a clearer customer journey, a faster team, a more consistent operation, or a new idea made real.</p></div>
+    <section class="about-story" aria-labelledby="approach-title">
+      <div class="about-story-label reveal"><p class="content-label">My approach</p></div>
+      <div class="about-story-main reveal"><h2 id="approach-title">Close to the detail.<br><em>Clear on the bigger picture.</em></h2></div>
+      <div class="about-story-copy reveal"><p>I start with your business, then shape the design and technology around it. The aim is simple: useful software that makes everyday work easier.</p></div>
     </section>
 
-    <section class="principles section-dark">
-      <div class="section-heading reveal"><p class="section-index">WORKING PRINCIPLES</p><h2>How I keep projects moving.</h2></div>
+    <section class="principles section-dark" aria-labelledby="principles-title">
+      <div class="section-heading reveal"><p class="content-label">Working principles</p><h2 id="principles-title">A simpler way to work.</h2></div>
       <div class="principle-list">
-        <div class="reveal"><h3>Clarity before complexity</h3><p>Make the problem and the next decision clear before adding more technology.</p></div>
-        <div class="reveal"><h3>Show the work early</h3><p>Working prototypes create better conversations than long documents and assumptions.</p></div>
-        <div class="reveal"><h3>Build for the handover</h3><p>Readable systems, sensible tools and no mystery dependency on one developer.</p></div>
-        <div class="reveal"><h3>Make it earn its place</h3><p>Every feature should save time, reduce friction or create measurable value.</p></div>
+        <div class="reveal"><h3>Keep it clear.</h3><p>Agree the problem, scope and next step.</p></div>
+        <div class="reveal"><h3>Show it early.</h3><p>Review working ideas before the full build.</p></div>
+        <div class="reveal"><h3>Make it useful.</h3><p>Focus on what helps your customers and team.</p></div>
+        <div class="reveal"><h3>Hand it over well.</h3><p>Leave you with clear tools and practical guidance.</p></div>
       </div>
     </section>
 
-    <section class="fit-section">
-      <div class="fit-heading reveal"><p class="section-index">A GOOD FIT</p><h2>We’ll work well together if…</h2></div>
-      <div class="fit-list reveal"><p>You want a thinking partner, not just a pair of hands.</p><p>You value clear communication and fast feedback.</p><p>You’re ready to simplify before you scale.</p><p>You care how the product feels as much as how it works.</p></div>
+    <section class="fit-section" aria-labelledby="fit-title">
+      <div class="fit-heading reveal"><p class="content-label">A good fit</p><h2 id="fit-title">Good work is<br>a shared effort.</h2></div>
+      <div class="fit-list reveal"><p>Clear communication.</p><p>Practical decisions.</p><p>Care for the final result.</p></div>
     </section>
 
-    <section class="inline-cta inline-cta-yellow"><p class="reveal">Have a clear brief—or just the start of an idea?</p><h2 class="reveal">Both are good places to begin.</h2><a class="button button-dark reveal" href="contact.html">Start a conversation</a></section>
+    <section class="inline-cta inline-cta-yellow" aria-labelledby="about-cta-title"><h2 id="about-cta-title" class="reveal">Have something in mind?</h2><a class="button button-dark reveal" href="contact.html">Start a conversation <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="site-footer"><div class="footer-brand"><img class="footer-wordmark" src="assets/wordmark-dark.svg" alt="ELTONEX"></div><p>Sydney, Australia<br>Working worldwide</p><div class="footer-links"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><p>© <span data-year></span> ELTONEX<br>Build what’s next.</p></footer>
+  <footer class="site-footer footer-rework">
+    <div class="footer-brand"><a href="index.html" aria-label="ELTONEX home"><img class="footer-wordmark" src="assets/wordmark-dark.svg" alt="ELTONEX" width="196" height="25"></a><p>Thoughtful design.<br>Practical development.</p></div>
+    <nav class="footer-links footer-explore" aria-label="Footer explore"><h2 class="footer-label">Explore</h2><a href="index.html">Home</a><a href="about.html">About Elton</a><a href="contact.html">Contact</a></nav>
+    <nav class="footer-links footer-services" aria-label="Footer services"><h2 class="footer-label">Services</h2><a href="services.html#websites">Websites &amp; commerce</a><a href="services.html#systems">Business systems</a><a href="services.html#automation">AI agents</a><a href="services.html#pricing">All services &amp; pricing</a></nav>
+    <div class="footer-contact"><h2 class="footer-label">Get in touch</h2><a class="footer-email" href="mailto:eltonw482@gmail.com">eltonw482@gmail.com</a><p>Sydney, Australia<br>Working worldwide</p></div>
+    <div class="footer-bottom"><p>© <span data-year></span> ELTONEX</p><p>Build what’s next.</p></div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>

@@ -30,13 +30,21 @@
     mobileMenu.id ||= 'mobile-navigation';
     menuToggle.setAttribute('aria-controls', mobileMenu.id);
     const setMenuOpen = (open, restoreFocus = false) => {
+      // Move focus before hiding the menu, including when resizing to desktop.
+      if (!open && mobileMenu.contains(document.activeElement)) {
+        const focusTarget = menuToggle.getClientRects().length ? menuToggle : header?.querySelector('a[href]');
+        focusTarget?.focus({ preventScroll: true });
+      }
       menuToggle.setAttribute('aria-expanded', String(open));
       menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       mobileMenu.classList.toggle('open', open);
       mobileMenu.setAttribute('aria-hidden', String(!open));
       mobileMenu.inert = !open;
       body.classList.toggle('menu-open', open);
-      if (open) mobileMenu.querySelector('a[href]')?.focus();
+      document.querySelectorAll('main, .site-footer').forEach(node => { node.inert = open; });
+      if (open) requestAnimationFrame(() => {
+        if (menuToggle.getAttribute('aria-expanded') === 'true') mobileMenu.querySelector('a[href]')?.focus({ preventScroll: true });
+      });
       else if (restoreFocus) menuToggle.focus();
     };
     setMenuOpen(false);
@@ -157,17 +165,4 @@
     });
   }
 
-  const form = document.querySelector('[data-project-form]');
-  if (form) {
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const status = form.querySelector('[data-form-status]');
-      const name = new FormData(form).get('name');
-      if (status) {
-        status.textContent = `Thanks${name ? `, ${name}` : ''}. This is the preview interaction—connect your preferred inbox before launch.`;
-        status.classList.add('success');
-      }
-      form.querySelector('button[type="submit"]')?.setAttribute('disabled', 'true');
-    });
-  }
 })();

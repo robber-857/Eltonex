@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="layout.css">
   <link rel="stylesheet" href="hero.css">
   <link rel="stylesheet" href="capability-ticker.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 <body data-page="home" class="home-v2">
   <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
@@ -97,16 +98,16 @@
           <p>High-impact sites that make your offer clear and turn attention into enquiries.</p>
         </a>
         <a class="service-row reveal" href="services.html#apps">
-          <h3>Web & mobile apps</h3>
-          <p>Focused products with intuitive journeys, reliable foundations and room to grow.</p>
+          <h3>iOS &amp; Android apps</h3>
+          <p>Mobile apps for iOS and Android, designed around your users and built for everyday use.</p>
         </a>
         <a class="service-row reveal" href="services.html#systems">
           <h3>Internal systems</h3>
           <p>Purpose-built tools that replace spreadsheets, handoffs and operational friction.</p>
         </a>
         <a class="service-row reveal" href="services.html#automation">
-          <h3>AI automation</h3>
-          <p>Practical SOP workflows that connect your tools and give repetitive work back to software.</p>
+          <h3>Custom AI agents</h3>
+          <p>Custom AI agents that solve real business problems, built around your processes, tools and goals.</p>
         </a>
       </div>
     </section>
@@ -144,15 +145,15 @@
       </div>
     </section>
 
-    <section class="process-section">
+    <section class="process-section" aria-labelledby="home-process-title">
       <div class="process-intro reveal">
-        <h2>Clear process.<br>Fewer surprises.</h2>
-        <a class="text-link" href="services.html#process">See the full process</a>
+        <div><p class="content-label">How we work</p><h2 id="home-process-title">A clear path<br>from brief to launch.</h2></div>
+        <div class="process-summary"><p>You work directly with the person designing and building your product. Clear decisions, useful checkpoints and no lost handoffs.</p><a class="text-link" href="services.html#process">See the full process <span aria-hidden="true">↗</span></a></div>
       </div>
       <ol class="process-steps">
-        <li class="reveal"><h3>Find the leverage</h3><p>We define the real business problem, the audience and what success looks like.</p></li>
-        <li class="reveal"><h3>Make it tangible</h3><p>You see the structure, visual direction and core interactions before the heavy build.</p></li>
-        <li class="reveal"><h3>Build, test, launch</h3><p>I engineer the experience, keep feedback loops short and stay close through release.</p></li>
+        <li class="reveal"><p class="process-stage">Discover</p><h3>Define the right problem.</h3><p>We map the business need, your audience and the scope. You know what we’re building and why.</p></li>
+        <li class="reveal"><p class="process-stage">Design</p><h3>See it before we build.</h3><p>Review the structure, visual direction and key interactions. Make the important decisions while changes are simple.</p></li>
+        <li class="reveal"><p class="process-stage">Develop &amp; deliver</p><h3>Build it. Make it work.</h3><p>Follow progress through working previews, then test, launch and hand over with a clear plan for what comes next.</p></li>
       </ol>
     </section>
 
@@ -166,19 +167,18 @@
       </div>
     </section>
 
-    <section class="final-cta">
-      <div class="final-cta-mark" aria-hidden="true"><img src="assets/logo-mark.svg" alt=""></div>
-      <p class="eyebrow reveal"><span></span> Have a project in mind?</p>
-      <h2 class="reveal">Let’s build<br><em>what’s next.</em></h2>
-      <a class="cta-circle reveal" href="contact.html"><span>Start a<br>conversation</span><b>↗</b></a>
+    <section class="final-cta" aria-labelledby="home-cta-title">
+      <div class="final-cta-copy reveal"><p class="content-label">Have a project in mind?</p><h2 id="home-cta-title">Let’s build<br>what’s next.</h2></div>
+      <div class="final-cta-actions reveal"><p>A new website, a better system or a first idea.<br>Tell me what your business needs.</p><a class="button button-dark" href="contact.html">Start a conversation <span aria-hidden="true">↗</span></a><a class="text-link" href="services.html#pricing">Explore services &amp; pricing</a></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand"><img class="footer-wordmark" src="assets/wordmark-dark.svg" alt="ELTONEX"></div>
-    <p>Sydney, Australia<br>Working worldwide</p>
-    <div class="footer-links"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-    <p>© <span data-year></span> ELTONEX<br>Build what’s next.</p>
+  <footer class="site-footer footer-rework">
+    <div class="footer-brand"><a href="index.html" aria-label="ELTONEX home"><img class="footer-wordmark" src="assets/wordmark-dark.svg" alt="ELTONEX" width="196" height="25"></a><p>Thoughtful design.<br>Practical development.</p></div>
+    <nav class="footer-links footer-explore" aria-label="Footer explore"><h2 class="footer-label">Explore</h2><a href="index.html">Home</a><a href="about.html">About Elton</a><a href="contact.html">Contact</a></nav>
+    <nav class="footer-links footer-services" aria-label="Footer services"><h2 class="footer-label">Services</h2><a href="services.html#websites">Websites &amp; commerce</a><a href="services.html#systems">Business systems</a><a href="services.html#automation">AI agents</a><a href="services.html#pricing">All services &amp; pricing</a></nav>
+    <div class="footer-contact"><h2 class="footer-label">Get in touch</h2><a class="footer-email" href="mailto:eltonw482@gmail.com">eltonw482@gmail.com</a><p>Sydney, Australia<br>Working worldwide</p></div>
+    <div class="footer-bottom"><p>© <span data-year></span> ELTONEX</p><p>Build what’s next.</p></div>
   </footer>
 
   <script src="script.js"></script>

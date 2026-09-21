@@ -1,0 +1,17 @@
+{
+  "name": "eltonex-site",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/start.cjs",
+    "admin:password": "node server/password.cjs",
+    "test": "node --test server/*.test.cjs"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemailer": "10.0.10"
+  }
+}

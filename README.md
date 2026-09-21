@@ -1,14 +1,17 @@
-# ELTONEX personal site preview
+# ELTONEX personal site
 
-Static multi-page preview for the ELTONEX personal website.
+Multi-page ELTONEX website with a private enquiry inbox and optional SMTP notifications.
 
 ## Preview locally
 
-From this folder, run a static server and open the reported localhost URL:
+Use Node.js 24.14 or later. Run the website and Contact backend together:
 
 ```powershell
-node preview-server.cjs
+npm install
+npm start
 ```
+
+The full site runs at `http://127.0.0.1:4174`; the private inbox is at `/admin/`. Configure an administrator password using [the backend setup guide](server/README.md). `node preview-server.cjs` still offers a static visual preview on port 4173, where the contact form is unavailable and directs visitors to email.
 
 Pages:
 
@@ -27,8 +30,12 @@ The short introduction types once, then stays readable. Its layout and screen-re
 
 The Hero's composition and restrained hovering motion reference [Opo Finance by ALEX BENDER / FANCY](https://dribbble.com/shots/27285977-Opo-Finance-landing-page-web-design-hero-section-3D-Animation). Its footage and assets are not reused. The original ELTONEX mark, black and gold palette, landscape and video retain the site's own identity.
 
-The contact form is intentionally a preview interaction and does not send data yet.
+The Contact form saves enquiries through `/api/enquiries` before confirming receipt. The private `/admin/` inbox supports sign-in, search, pagination, enquiry details, follow-up status and private notes. SMTP notifications are optional and queued separately; without SMTP, enquiries remain saved and the inbox shows that email setup is pending. See [backend setup, deployment and backup instructions](server/README.md).
 
-`layout.css` supplies the shared responsive content layouts. Service introductions and details reflow with their available width; the two project examples share one grid, image proportion and metadata structure. Decorative section, menu, process and form counters have been removed. `services.css` supplies the Service page catalogue and AUD pricing layout. `services.js` progressively enhances five service categories into accessible Basic / Standard / Advanced package tabs with direct anchor links and browser history support; all packages remain readable without JavaScript. 3D product films and ongoing support have separate sections. Package enquiries link to the existing contact page; its form remains a preview interaction.
+All four pages share the responsive footer in `footer.css`: brand, Explore, Services and a rightmost contact column with the direct `mailto:eltonw482@gmail.com` link. Tablet layouts keep contact beside the brand; mobile layouts stack contact below two navigation columns. The same email is available in the Contact introduction. `about.css` supplies the concise, left-aligned About layout with border-free working principles and fit statements. About uses locally hosted Nunito with true italics on selected headings; the font files and SIL Open Font License are in `assets/fonts/nunito/`.
+
+The homepage process section uses three columns on desktop and stacked phases on smaller screens. Its closing contact section uses standard links and buttons. `contact.css` provides the Contact page's compact type scale, responsive form grid and touch targets. `contact.js` handles availability, validation, submission and retry feedback. Shared mobile navigation moves focus into the menu, keeps page content inert while open and restores access on close or desktop resize. Portrait and landscape hero spacing is handled in `hero.css`.
+
+`layout.css` supplies the shared responsive content layouts. Service introductions and details reflow with their available width; the two project examples share one grid, image proportion and metadata structure. Decorative section, menu, process and form counters have been removed. `services.css` supplies the Service page catalogue and AUD pricing layout. `services.js` progressively enhances five service categories into accessible Basic / Standard / Advanced package tabs with direct anchor links and browser history support; all packages remain readable without JavaScript. App development covers iOS and Android; custom AI agents focus on real business problems. 3D product films and ongoing support have separate sections. Package enquiries link to the Contact page.
 
 The capability strip contains four source items. `capability-ticker.js` measures a circular belt and only mirrors fragments crossing an edge; it never places a second complete set in view. `capability-ticker.css` supplies a wrapping, readable fallback for reduced motion and no JavaScript. The animation pauses outside the viewport and in background tabs.

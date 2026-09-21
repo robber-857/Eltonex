@@ -3,47 +3,55 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Start a project conversation with ELTONEX.">
-  <title>Contact — ELTONEX</title>
-  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="layout.css">
+  <title>Contact | ELTONEX</title>
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="layout.css"><link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 <body data-page="contact" class="contact-page">
   <div class="page-curtain" aria-hidden="true"><img src="assets/logo-mark.svg" alt=""></div>
   <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
-  <header class="site-header header-on-dark" data-header>
-    <a class="brand brand-exact" href="index.html" aria-label="ELTONEX home"><img class="brand-rocket" src="assets/logo-mark-light.svg" alt="" width="35" height="36"><img class="brand-wordmark" src="assets/wordmark-light.svg" alt="ELTONEX" width="132" height="19"></a>
-    <nav class="desktop-nav" aria-label="Main navigation"><a href="services.html" data-nav="services">Service</a><a href="about.html" data-nav="about">About</a><a href="contact.html" data-nav="contact">Contact</a></nav>
-    <div class="header-actions"><a class="header-cta header-cta-light" href="#contact-form">Project details</a></div>
+  <header class="site-header header-on-light" data-header>
+    <a class="brand brand-exact" href="index.html" aria-label="ELTONEX home"><img class="brand-rocket" src="assets/logo-mark.svg" alt="" width="35" height="36"><img class="brand-wordmark" src="assets/wordmark-dark.svg" alt="ELTONEX" width="132" height="19"></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="services.html" data-nav="services">Service</a><a href="about.html" data-nav="about">About</a><a href="contact.html" data-nav="contact" aria-current="page">Contact</a></nav>
+    <div class="header-actions"><a class="header-cta" href="#contact-form">Project details</a></div>
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
   </header>
-  <div class="mobile-menu" data-mobile-menu aria-hidden="true" inert><nav aria-label="Mobile navigation"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><p>Sydney / Working worldwide</p></div>
+  <div class="mobile-menu" data-mobile-menu aria-hidden="true" inert><nav aria-label="Mobile navigation"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a></nav><p>Sydney / Working worldwide</p></div>
 
   <main>
-    <section class="contact-hero">
-      <p class="eyebrow reveal"><span></span> LET’S TALK</p>
-      <h1 class="reveal">A useful first step<br>starts with a <em>conversation.</em></h1>
-      <div class="contact-hero-meta reveal"><p>Tell me what you’re trying to change, build or improve. I’ll reply with a clear next step.</p><span>Typical reply / 1–2 business days</span></div>
-      <div class="contact-mark" aria-hidden="true"><img src="assets/logo-mark.svg" alt=""></div>
+    <section class="contact-hero" aria-labelledby="contact-title">
+      <div class="contact-heading reveal"><p class="content-label">Let’s talk</p><h1 id="contact-title">Good work starts <br>with a conversation.</h1></div>
+      <div class="contact-hero-meta reveal"><p>Tell me what you’re trying to build or improve. We’ll find a practical next step together.</p><a class="contact-direct-email" href="mailto:eltonw482@gmail.com">eltonw482@gmail.com</a><div class="contact-response"><span>Typical response</span><strong>1–2 business days</strong></div></div>
     </section>
 
-    <section class="contact-form-section" id="contact-form">
-      <div class="contact-form-intro reveal"><p class="section-index">PROJECT ENQUIRY</p><h2>What are we<br>building?</h2><p>Share as much or as little as you know. A rough idea is enough to start.</p></div>
-      <form class="project-form reveal" data-project-form>
-        <label><span>Your name</span><input type="text" name="name" placeholder="How should I address you?" required></label>
-        <label><span>Work email</span><input type="email" name="email" placeholder="you@company.com" required></label>
-        <fieldset><legend>What can I help with?</legend><div class="choice-grid"><label><input type="checkbox" name="service" value="Website"><span>Website</span></label><label><input type="checkbox" name="service" value="App"><span>App</span></label><label><input type="checkbox" name="service" value="Internal system"><span>Internal system</span></label><label><input type="checkbox" name="service" value="AI automation"><span>AI automation</span></label></div></fieldset>
-        <label><span>Project context</span><textarea name="message" rows="4" placeholder="What’s happening now, and what would a better outcome look like?" required></textarea></label>
+    <section class="contact-form-section" id="contact-form" aria-labelledby="enquiry-title">
+      <div class="contact-form-intro reveal"><p class="content-label">Project enquiry</p><h2 id="enquiry-title">What do you <br>have in mind?</h2><p>A rough idea is enough. Share your goals, where things stand and the help you need.</p><div class="contact-guidance"><h3>A useful starting point</h3><ul><li>What you want to build or improve</li><li>Who it needs to work for</li><li>Your ideal timing and budget, if known</li></ul></div><a class="text-link" href="services.html#pricing">See services &amp; pricing <span aria-hidden="true">↗</span></a></div>
+      <form class="project-form reveal" data-project-form aria-labelledby="enquiry-title" aria-describedby="form-status">
+        <label class="contact-field-half"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Your name" maxlength="100" required></label>
+        <label class="contact-field-half"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" maxlength="254" required></label>
+        <fieldset><legend>What can I help with?</legend><div class="choice-grid"><label><input type="checkbox" name="service" value="Website"><span>Website</span></label><label><input type="checkbox" name="service" value="iOS / Android app"><span>iOS / Android app</span></label><label><input type="checkbox" name="service" value="Internal system"><span>Internal system</span></label><label><input type="checkbox" name="service" value="Custom AI agent"><span>Custom AI agent</span></label></div></fieldset>
+        <label><span>Project context</span><textarea name="message" rows="5" placeholder="What would you like to build or improve?" minlength="10" maxlength="5000" required></textarea></label>
         <label><span>Ideal timing</span><select name="timing"><option value="">Select a rough timeframe</option><option>As soon as practical</option><option>Within 1–2 months</option><option>Within 3–6 months</option><option>Still exploring</option></select></label>
-        <div class="form-submit"><button class="button button-dark" type="submit">Send project details</button><p data-form-status>This preview keeps your details on this device.</p></div>
+        <label class="form-trap" aria-hidden="true"><span>Leave this empty</span><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <div class="form-submit"><button class="button button-dark" type="submit" disabled>Send project details <span aria-hidden="true">↗</span></button><p id="form-status" data-form-status role="status" aria-live="polite">Checking enquiry availability…</p></div>
+        <p class="form-privacy">Your details are used to respond to your enquiry. Please avoid sending sensitive information.</p>
+        <noscript><p>Please email <a href="mailto:eltonw482@gmail.com">eltonw482@gmail.com</a> to discuss your project.</p></noscript>
       </form>
     </section>
 
-    <section class="contact-bottom section-dark">
-      <p class="section-index reveal">NOT READY FOR A BRIEF?</p>
-      <h2 class="reveal">That’s okay.<br><em>Clarity is part of the work.</em></h2>
-      <a class="text-link reveal" href="services.html">Explore what I build</a>
+    <section class="contact-bottom section-dark" aria-labelledby="contact-next-title">
+      <div class="reveal"><p class="content-label">Still exploring?</p><h2 id="contact-next-title">Find the right starting point.</h2><p>Compare services, project scopes and indicative AUD pricing.</p></div>
+      <a class="button button-light reveal" href="services.html">Explore services <span aria-hidden="true">↗</span></a>
     </section>
   </main>
-  <footer class="site-footer footer-on-dark"><div class="footer-brand"><img class="footer-wordmark" src="assets/wordmark-light.svg" alt="ELTONEX"></div><p>Sydney, Australia<br>Working worldwide</p><div class="footer-links"><a href="services.html">Service</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><p>© <span data-year></span> ELTONEX<br>Build what’s next.</p></footer>
+  <footer class="site-footer footer-rework footer-on-dark">
+    <div class="footer-brand"><a href="index.html" aria-label="ELTONEX home"><img class="footer-wordmark" src="assets/wordmark-light.svg" alt="ELTONEX" width="196" height="25"></a><p>Thoughtful design.<br>Practical development.</p></div>
+    <nav class="footer-links footer-explore" aria-label="Footer explore"><h2 class="footer-label">Explore</h2><a href="index.html">Home</a><a href="about.html">About Elton</a><a href="contact.html">Contact</a></nav>
+    <nav class="footer-links footer-services" aria-label="Footer services"><h2 class="footer-label">Services</h2><a href="services.html#websites">Websites &amp; commerce</a><a href="services.html#systems">Business systems</a><a href="services.html#automation">AI agents</a><a href="services.html#pricing">All services &amp; pricing</a></nav>
+    <div class="footer-contact"><h2 class="footer-label">Get in touch</h2><a class="footer-email" href="mailto:eltonw482@gmail.com">eltonw482@gmail.com</a><p>Sydney, Australia<br>Working worldwide</p></div>
+    <div class="footer-bottom"><p>© <span data-year></span> ELTONEX</p><p>Build what’s next.</p></div>
+  </footer>
   <script src="script.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>
