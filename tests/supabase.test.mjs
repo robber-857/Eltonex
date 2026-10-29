@@ -114,10 +114,10 @@ test('Vercel build and edge configuration isolate private source and point to th
   const { existsSync } = await import('node:fs');
   const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
   assert.equal(config.outputDirectory,'dist');
-  assert.equal(config.rewrites[0].destination,'https://gssdsqqjzqbosrswytak.supabase.co/functions/v1/site-api/:path*');
+  assert.equal(config.routes.find(route=>route.src==='/api/(.*)' && route.dest).dest,'https://gssdsqqjzqbosrswytak.supabase.co/functions/v1/site-api/$1');
   const {execFileSync}=await import('node:child_process');
   execFileSync(process.execPath,['scripts/build-static.cjs'],{cwd:new URL('..',import.meta.url)});
-  for(const file of ['index.html','admin/index.html','contact.js','assets/wordmark-dark.svg']) assert.ok(existsSync(new URL(`../dist/${file}`,import.meta.url)));
+  for(const file of ['index.html','admin/index.html','contact.js','assets/wordmark-dark.svg','robots.txt','sitemap.xml','404.html']) assert.ok(existsSync(new URL(`../dist/${file}`,import.meta.url)));
   for(const file of ['.env','server','supabase','output','tests','package.json']) assert.equal(existsSync(new URL(`../dist/${file}`,import.meta.url)),false);
 });
 
