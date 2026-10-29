@@ -141,7 +141,7 @@ function createApp(config) {
   });
 
   // Only intentional public files are served; source, credentials and data stay private.
-  const publicFiles = ['index.html', 'about.html', 'contact.html', 'services.html', 'styles.css', 'layout.css', 'hero.css', 'about.css', 'contact.css', 'footer.css', 'services.css', 'capability-ticker.css', 'script.js', 'contact.js', 'services.js', 'hero-film.js', 'hero-scene.js', 'capability-ticker.js'];
+  const publicFiles = ['robots.txt', 'sitemap.xml', '404.html', 'index.html', 'about.html', 'contact.html', 'services.html', 'styles.css', 'layout.css', 'hero.css', 'about.css', 'contact.css', 'footer.css', 'services.css', 'capability-ticker.css', 'script.js', 'contact.js', 'services.js', 'hero-film.js', 'hero-scene.js', 'capability-ticker.js'];
   app.get('/', (req, res) => res.sendFile(path.join(root, 'index.html')));
   for (const file of publicFiles) app.get(`/${file}`, (req, res) => res.sendFile(path.join(root, file)));
   app.use('/assets', express.static(path.join(root, 'assets'), { dotfiles: 'deny', index: false }));

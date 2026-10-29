@@ -4,6 +4,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm ci",
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "https://gssdsqqjzqbosrswytak.supabase.co/functions/v1/site-api/:path*" },
     { "source": "/admin", "destination": "/admin/index.html" },

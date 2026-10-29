@@ -5,6 +5,8 @@ const path = require('path');
 const root = __dirname;
 const port = Number(process.env.PORT || 4173);
 const mime = {
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -30,7 +32,7 @@ http.createServer((request, response) => {
     return;
   }
   const requested = pathname === '/' ? '/index.html' : pathname;
-  const publicPages = new Set(['index.html', 'about.html', 'contact.html', 'services.html', 'styles.css', 'layout.css', 'hero.css', 'about.css', 'contact.css', 'footer.css', 'services.css', 'capability-ticker.css', 'script.js', 'contact.js', 'services.js', 'hero-film.js', 'hero-scene.js', 'capability-ticker.js']);
+  const publicPages = new Set(['robots.txt', 'sitemap.xml', '404.html', 'index.html', 'about.html', 'contact.html', 'services.html', 'styles.css', 'layout.css', 'hero.css', 'about.css', 'contact.css', 'footer.css', 'services.css', 'capability-ticker.css', 'script.js', 'contact.js', 'services.js', 'hero-film.js', 'hero-scene.js', 'capability-ticker.js']);
   if (!publicPages.has(requested.slice(1)) && !/^\/assets\/(?!.*(?:^|\/)\.)[^\\]+$/.test(requested)) {
     response.writeHead(404).end('Not found');
     return;
